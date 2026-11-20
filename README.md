@@ -200,6 +200,33 @@ int *p=&a;
 char *p=&a;
 
 DOES THE POINTER TYPE AFFECT POINTER ARITHEMATIC?
+int a=10;
+int *p=&a;
+here p++:
+oxa00---oxa004
+
+char b='A':
+char *q=&b;
+p++ means oxa000 to oxa001
+
+pointer arithmetic formula
+address + sizeof(data type)
+
+POINTER TYPES AND TYPE COMPATIBILITY:
+int a = 10;
+int *p = &a;
+char *q = &a;
+first was right and second declaration is error 
+because q is a character pointer and &a is an integer pointer
+DIFFERENT POINTER TYPES ARE NOT AUTOMATICALLY INTERCHANGEBLE
+
+char *q=(char *)&a;
+
+here we are not changing the int to character object
+but converting to pointer type to char
+
+
+
 
 
 
