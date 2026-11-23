@@ -1,0 +1,130 @@
+WILD, NULL, DANGLING POINTERS:
+
+WILD POINTER:
+A pointer is declared but not initialized.
+int *p;
+
+WHOSE VALUE IS INDETERMINED SO ACCESSING CAUSES UNDEFINED BEHAVIOR.
+
+NULL POINTER:
+POINTER EXPLICITLY INITIALIZED WITH NULL.
+int *p=NULL;
+
+it points to nothing invalid memory
+so accessing it causes undefined behavior.
+
+DANGLING POINTER.
+A POINTER REFERS TO AN OBJECT WHOSE LIFETIME HAS ENDED OR WHOSE ALLOCATED MEMORY HAS BEEN FREED WHILE HOLDING THE OLD ADDRESS.
+
+int *p=malloc(sizeof(int));
+*p=100;
+free(p);
+
+p is now dangling pointer accessing it causes undefined behavior.
+
+#include <stdio.h>
+
+int main()
+{
+    int a = 10;
+    int b = 20;
+
+    int *p = &a;
+    int *q = &b;
+
+    *p = 50;
+    q = p;
+    *q = 100;
+
+    printf("%d\n", a);
+    printf("%d\n", b);
+    printf("%d\n", *p);
+    printf("%d\n", *q);
+
+    return 0;
+}
+100
+20
+100
+100
+
+POINTER OPERATIONS AND ARITHMETIC:
+
+TOPIC 1: POINTER INCREMENT:
+
+here normal increment changes the value like a++
+but pointer increment increases the address relative to the data type of pointer
+
+int a[] = {10, 20, 30, 40};
+
+int *p = &a[0];
+
+printf("%d\n", *p);
+
+p++;
+
+printf("%d\n", *p);
+
+p=1000
+*p=10
+p++ = for int  1004
+*p=20
+NOTE:
+
+sizeof(*p)  size of int type not like sizeof(20)
+
+p--
+moves backward by relative to it's data type.
+1004-4=1000
+10
+
+NEXT POINTER ADDITION:
+int a[]={10,20,30,40,50};
+int *p=&a[0];
+
+p + 2 → which address? = 1008
+*(p + 2) → which value? = 30
+Does p itself change after evaluating p + 2? = no bcz it never modified
+
+int a[] = {10, 20, 30, 40, 50};
+int *p = &a[0];
+
+p = p + 3;
+
+Address stored in p? = 1012
+Value of *p? = 40
+Value of *(p - 2)? = 20
+
+POST INCREMENT AND PRE INCREMENT:
+
+int a[] = {10, 20, 30};
+int *p = &a[0];
+
+printf("%d\n", *p++); = 10
+printf("%d\n", *p); = 20
+*p++ means *(p++)
+here first take the first value then increment the address
+
+int a[] = {10, 20, 30};
+int *p = &a[0];
+
+printf("%d\n", *++p); = 20
+printf("%d\n", *p); = 20
+
+here *(++p) means first increment the address then print the value
+so 
+
+| Expression |    |     Meaning     |
+
+| `*p++`   | Access first, increment afterward |
+| `*++p`   | Increment first, access afterward |
+| `(*p)++` | Increment the value pointed to by p |
+| `++(*p)` | Increment the pointed-to value first |
+
+(*p)++  post increment value
+++(*p)  pre increment value
+
+
+
+
+
