@@ -225,6 +225,15 @@ char *q=(char *)&a;
 here we are not changing the int to character object
 but converting to pointer type to char
 
+NOTE:
+TREAT THIS ADDRESS AS A CHARACTER POINTER INSTEAD OF AN INTEGER POINTER.
+REMEMBER:
+
+int a=100;
+stores the integer's binary representation.
+char str[]="100" stores the three characters '1','0','0'.
+
+
 
 
 
